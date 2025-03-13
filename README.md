@@ -36,7 +36,7 @@ Not init lol
 sudo rm -rf projet-react
 git clone https://github.com/trifoil/projet-react.git
 cd projet-react
-sh install.sh
+sudo sh install.sh
 ```
 
 
