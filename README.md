@@ -8,7 +8,7 @@ sudo dnf install git -y
 git clone https://github.com/trifoil/projet-react.git
 
 
-sudo dnf remove docker \
+sudo dnf remove -y docker \
                   docker-client \
                   docker-client-latest \
                   docker-common \
@@ -22,20 +22,20 @@ sudo dnf remove docker \
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl enable --now docker
 sudo docker run hello-world
 
-docker volume create portainer_data
-docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
+sudo docker volume create portainer_data
+sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
 ```
 
 Not init lol
 
 ```sh
 sudo rm -rf projet-react
-sudo dnf install git -y
 git clone https://github.com/trifoil/projet-react.git
+cd projet-react
 sh install.sh
 ```
 
