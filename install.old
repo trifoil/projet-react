@@ -1,0 +1,59 @@
+#!/bin/bash
+
+echo "merde"
+cd ecommerceapi 
+
+
+
+cd docker
+
+docker build -t ecommerceapi .
+
+
+
+DOCKER_COMPOSE_CONTENT='
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ecommerceapi 
+    container_name: ecommerceapi-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/ecommerce
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+
+'
+
+# Create the docker-compose.yml file
+echo "$DOCKER_COMPOSE_CONTENT" > docker-compose.yml
+
+# Deploy the Docker containers
+docker compose up -d
+
+# Check if the deployment was successful
+if [ $? -eq 0 ]; then
+  echo "Deployment successful!"
+else
+  echo "Deployment failed. Please check the logs."
+fi
+
+
+cd ..
+cd ..
