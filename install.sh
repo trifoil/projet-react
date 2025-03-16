@@ -1,10 +1,11 @@
 #!/bin/sh
 
-Define the directory and file path
+# Define the directory and file path
 DIR="./docker/api"
 FILE="$DIR/docker-compose.yaml"
 
 # Create the directory if it doesn't exist
+mkdir -p "$DIR"
 
 # Write the docker-compose.yaml content
 cat <<EOF > "$FILE"
@@ -19,6 +20,8 @@ services:
       - 3000:3000  # Map port 3000 on the host to port 3000 in the container
     image: ecommerceapi:latest
     stdin_open: true
+    env_file:
+      - ./test.env  # Load environment variables from example.env
 
   mongodb:
     image: mongo
@@ -45,11 +48,8 @@ cd "$DIR"
 sudo docker compose up -d
 cd ../..
 
-#pull
+# Pull the Postwoman image
 docker pull liyasthomas/postwoman
 
-#run
+# Run the Postwoman container
 docker run -d -p 3001:3000 liyasthomas/postwoman:latest
-
-#build
-#docker build -t postwoman:latest
