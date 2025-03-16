@@ -16,7 +16,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - 3002:3000  # Map port 3000 on the host to port 3000 in the container
+      - 3000:3000  # Map port 3000 on the host to port 3000 in the container
     image: ecommerceapi:latest
     stdin_open: true
 
