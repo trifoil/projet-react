@@ -3,13 +3,53 @@
 # Define the directory and file path
 DIR="./docker/api"
 FILE="$DIR/docker-compose.yaml"
+ENV_FILE="$DIR/test.env"
 
 # Create the directory if it doesn't exist
 mkdir -p "$DIR"
 
+# Set default values for environment variables
+DEFAULT_CLOUD_NAME="dtthivula"
+DEFAULT_CLOUD_API_KEY="test"
+DEFAULT_CLOUD_API_SECRET="test"
+DEFAULT_CLOUD_PROJECT="test"
+
+# Prompt the user for environment variables with defaults
+echo "Please enter the following details for your cloud service (defaults are provided):"
+read -p "CLOUD_NAME [$DEFAULT_CLOUD_NAME]: " CLOUD_NAME
+CLOUD_NAME=${CLOUD_NAME:-$DEFAULT_CLOUD_NAME}
+
+read -p "CLOUD_API_KEY [$DEFAULT_CLOUD_API_KEY]: " CLOUD_API_KEY
+CLOUD_API_KEY=${CLOUD_API_KEY:-$DEFAULT_CLOUD_API_KEY}
+
+read -p "CLOUD_API_SECRET [$DEFAULT_CLOUD_API_SECRET]: " CLOUD_API_SECRET
+CLOUD_API_SECRET=${CLOUD_API_SECRET:-$DEFAULT_CLOUD_API_SECRET}
+
+read -p "CLOUD_PROJECT [$DEFAULT_CLOUD_PROJECT]: " CLOUD_PROJECT
+CLOUD_PROJECT=${CLOUD_PROJECT:-$DEFAULT_CLOUD_PROJECT}
+
+# Write the environment variables to test.env
+cat <<EOF > "$ENV_FILE"
+# Main Configurations
+NODE_ENV=development
+PORT=3000
+
+# Database Configurations
+DATABASE_CONNECTION=mongodb://root:test@mongodb:27017/
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=test
+DATABASE_PORT=27017
+
+# Cloudinary Configurations
+CLOUD_NAME=$CLOUD_NAME
+CLOUD_API_KEY=$CLOUD_API_KEY
+CLOUD_API_SECRET=$CLOUD_API_SECRET
+CLOUD_PROJECT=$CLOUD_PROJECT
+EOF
+echo "Environment variables have been written to $ENV_FILE"
+
 # Write the docker-compose.yaml content
 cat <<EOF > "$FILE"
-version: '3.6'
 services:
   backend:
     build: 
@@ -21,7 +61,7 @@ services:
     image: ecommerceapi:latest
     stdin_open: true
     env_file:
-      - ./test.env  # Load environment variables from example.env
+      - ./test.env  # Load environment variables from test.env
 
   mongodb:
     image: mongo

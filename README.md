@@ -33,15 +33,7 @@ cd projet-react
 sudo sh install.sh
 ```
 
-Not init lol
-
-```sh
-sudo rm -rf projet-react
-git clone https://github.com/trifoil/projet-react.git
-cd projet-react
-sudo sh install.sh
-```
-
+Start the project
 
 ```sh
 npm create vite@latest toto -- --template react
@@ -51,3 +43,17 @@ npm run dev
 ```
 
 
+In Postwoman, make sure you format the url as (localhost won't work since it is in a docker network) :
+
+```
+http://192.168.124.237:3000/api/auth/register
+```
+
+The script asks you to provide :
+
+```
+CLOUD_NAME
+CLOUD_API_KEY
+CLOUD_API_SECRET
+CLOUD_PROJECT
+```
