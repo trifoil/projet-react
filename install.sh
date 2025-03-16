@@ -36,20 +36,18 @@ services:
     stdin_open: true
     tty: true
 
+  postwoman:
+    image: liyasthomas/postwoman:latest
+    restart: always
+    ports:
+      - 3001:3000  # Map port 3001 on the host to port 3000 in the container
+
 volumes:
   db:
 EOF
-
-# Print success message
 echo "docker-compose.yaml has been created at $FILE"
 
-# Navigate to the directory and start the container
 cd "$DIR"
 sudo docker compose up -d
+echo "Dockers pulling and starting"
 cd ../..
-
-# Pull the Postwoman image
-docker pull liyasthomas/postwoman
-
-# Run the Postwoman container
-docker run -d -p 3001:3000 liyasthomas/postwoman:latest
