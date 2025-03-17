@@ -1,5 +1,28 @@
 #!/bin/sh
 
+
+dnf remove -y docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+
+dnf -y install dnf-plugins-core
+dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+systemctl enable --now docker
+docker run hello-world
+
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
+
+
 # Define the directory and file path
 DIR="./docker/api"
 FILE="$DIR/docker-compose.yaml"
