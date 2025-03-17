@@ -352,6 +352,7 @@
         ```
         http://192.168.124.237:3000/api/product/67d7c6e31808a2f9e65a22d9/details        
         ```
+    * Content type : ```application/json```
     * Headers :     
         * Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODc4OTEsImV4cCI6MTc0MjE5MTQ5MSwidHlwZSI6ImFjY2VzcyJ9.mNPAcd7NU-GJWvTsZ2TBuj2Ts9rlpIFQllzx9b1x_jA
         * Accept-Language : en_MX
@@ -369,12 +370,92 @@
     }
     ```
 
+    Checking if the price got modified :
+
+    * Method : ```GET```
+    * URL :
+        ```
+        http://192.168.124.237:3000/api/product/67d7c6e31808a2f9e65a22d9
+        ```
+
+    Answer :
+
+    ```json
+    {
+    "type": "Success",
+    "message": "Product found successfully.",
+    "product": {
+        "_id": "67d7c6e31808a2f9e65a22d9",
+        "name": "Arabica Coffee",
+        "mainImage": "https://res.cloudinary.com/dtthivula/image/upload/v1742194402/test/Products/ArabicaCoffee/yzo22styftlnr8r24jhy.webp",
+        "mainImageId": "test/Products/ArabicaCoffee/yzo22styftlnr8r24jhy",
+        "images": [
+        "https://res.cloudinary.com/dtthivula/image/upload/v1742194400/test/Products/ArabicaCoffee/l472odrq3uea6ildoh9v.webp"
+        ],
+        "imagesId": [
+        "test/Products/ArabicaCoffee/l472odrq3uea6ildoh9v"
+        ],
+        "description": "High-quality Arabica coffee beans, perfect for brewing.",
+        "category": "67d7ae281808a2f9e65a22c3",
+        "seller": "67d77f2d9ff9d2c7fc162b8b",
+        "price": 1450,
+        "priceAfterDiscount": 1350,
+        "priceDiscount": 10,
+        "colors": [
+        {
+            "_id": "67d7c6e31808a2f9e65a22dc",
+            "color": "Brown"
+        }
+        ],
+        "sizes": [
+        {
+            "_id": "67d7c6e31808a2f9e65a22e2",
+            "size": "500g"
+        },
+        {
+            "_id": "67d7c6e31808a2f9e65a22e0",
+            "size": "250g"
+        }
+        ],
+        "quantity": 100,
+        "sold": 0,
+        "isOutOfStock": false,
+        "ratingsAverage": 4.5,
+        "ratingsQuantity": 0,
+        "createdAt": "2025-03-17T06:53:23.497Z",
+        "updatedAt": "2025-03-17T08:23:31.319Z",
+        "slug": "arabica-coffee",
+        "__v": 1
+    }
+    }
+    ```
 
 10) Add another product 
 
-11) 
+    Add a product in the same category :
+
+    Answer :
+    
+
+11) Get a product details
+
+    Get details of a product id :
+
+    Answer :
 
 
+12) Get products by filter
+
+    Http query using filters to display "name" and "price" only :
+
+    Answer :
+
+
+13) Delete product
+
+    Use a query to delete a product :
+
+    Answer :
 
 ## Frontend 
 
