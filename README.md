@@ -159,7 +159,7 @@
 
     Answer :
 
-    ```
+    ```json
     {
     "type": "Success",
     "message": "Category created successfully.",
@@ -184,7 +184,7 @@
         * Accept-Language : en_MX
 
     Answer :
-    ```
+    ```json
     {
     "type": "Success",
     "message": "Found categories successfully.",
@@ -218,7 +218,7 @@
     * Body (add the following fields):
         * name: Arabica Coffee
         * description: High-quality Arabica coffee beans, perfect for brewing.
-        * category : coffee
+        * category : 67d7ae281808a2f9e65a22c3 (id of coffee category)
         * price : 1500
         * priceDiscount : 10
         * colors : Brown
@@ -229,11 +229,11 @@
         * mainImage : (image principale)
         * images : (additional images)
     * Body (raw input)
-        ```
+        ```json
         {
             "name": "Arabica Coffee",
             "description": "High-quality Arabica coffee beans, perfect for brewing.",
-            "category": "coffee",
+            "category": "67d7ae281808a2f9e65a22c3", 
             "price": "1500",
             "priceDiscount": "10",
             "colors": "Brown",
@@ -247,16 +247,54 @@
         }
         ```
 
-
     Answer :
-
+    ```json
+    {
+    "type": "Success",
+    "message": "Product created successfully.",
+    "product": {
+        "name": "Arabica Coffee",
+        "mainImage": "https://res.cloudinary.com/dtthivula/image/upload/v1742194402/test/Products/ArabicaCoffee/yzo22styftlnr8r24jhy.webp",
+        "mainImageId": "test/Products/ArabicaCoffee/yzo22styftlnr8r24jhy",
+        "images": [
+        "https://res.cloudinary.com/dtthivula/image/upload/v1742194400/test/Products/ArabicaCoffee/l472odrq3uea6ildoh9v.webp"
+        ],
+        "imagesId": [
+        "test/Products/ArabicaCoffee/l472odrq3uea6ildoh9v"
+        ],
+        "description": "High-quality Arabica coffee beans, perfect for brewing.",
+        "category": "67d7ae281808a2f9e65a22c3",
+        "seller": "67d77f2d9ff9d2c7fc162b8b",
+        "price": 1500,
+        "priceAfterDiscount": 1350,
+        "priceDiscount": 10,
+        "colors": [
+        "67d7c6e31808a2f9e65a22dc"
+        ],
+        "sizes": [
+        "67d7c6e31808a2f9e65a22e2",
+        "67d7c6e31808a2f9e65a22e0"
+        ],
+        "quantity": 100,
+        "sold": 0,
+        "isOutOfStock": false,
+        "ratingsAverage": 4.5,
+        "ratingsQuantity": 0,
+        "_id": "67d7c6e31808a2f9e65a22d9",
+        "slug": "arabica-coffee",
+        "id": "67d7c6e31808a2f9e65a22d9"
+    }
+    }
+    ```
     Listing all articles to check if it was added :
 
     Answer :
     
-9) 
+9) Modify a product price
 
-10) Modify a product price
+10) Add another product 
+
+11) 
 
 
 
