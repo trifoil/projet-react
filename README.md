@@ -132,11 +132,67 @@
         "role": "admin"
     },
     "tokens": {
-        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODM2ODUsImV4cCI6MTc0MjE4NzI4NSwidHlwZSI6ImFjY2VzcyJ9.IlB3Z8QQgV4Rvuutx0RKF9kbP2_v4eSalXgWqpQ3srY",
-        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODM2ODUsImV4cCI6MTc0MjI3MDA4NSwidHlwZSI6InJlZnJlc2gifQ.Hvx6it8jXa-N9t8dhr8xsu6DQieFWVTOsNIiXHXTL2U"
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODc4OTEsImV4cCI6MTc0MjE5MTQ5MSwidHlwZSI6ImFjY2VzcyJ9.mNPAcd7NU-GJWvTsZ2TBuj2Ts9rlpIFQllzx9b1x_jA",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODc4OTEsImV4cCI6MTc0MjI3NDI5MSwidHlwZSI6InJlZnJlc2gifQ.GWaQKeftA3IPb6Z6iSWM4uc5U09yueEtWxebZJwnNew"
     }
     }
     ```
+
+7) Adding a category
+
+    Using the received token, add a category "coffee" :
+
+    * Method : ```POST```
+    * URL :
+        ```
+        http://192.168.124.237:3000/api/category
+        ```
+    * Content type : ```multipart/form-data```
+    * Headers :     
+        * Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODc4OTEsImV4cCI6MTc0MjE5MTQ5MSwidHlwZSI6ImFjY2VzcyJ9.mNPAcd7NU-GJWvTsZ2TBuj2Ts9rlpIFQllzx9b1x_jA
+        * Accept-Language : en_MX
+        * Content-Type : multipart/form-data
+    * Body (add the following fields):
+        * name: coffee
+        * description: all products with coffee
+        * image: (Upload an image file for the category, e.g., a coffee-related image).
+
+    Answer :
+
+    ```
+    {
+    "type": "Success",
+    "message": "Category created successfully.",
+    "category": {
+        "name": "coffee",
+        "description": "all products with coffee",
+        "image": "https://res.cloudinary.com/dtthivula/image/upload/v1742188071/test/Category/coffee/li7mqk7py25kzbch6euh.webp",
+        "imageId": "test/Category/coffee/li7mqk7py25kzbch6euh",
+        "_id": "67d7ae281808a2f9e65a22c3"
+    }
+    }
+    ```
+
+    Listing all categories to check if it was added :
+
+    Answer :
+
+
+8) Adding a product with Postwoman
+
+    Adding a product in the "coffee" category
+
+    Answer :
+
+    Listing all articles to check if it was added :
+
+    Answer :
+    
+9) 
+
+10) Modify a product price
+
+
 
 ## Frontend 
 
