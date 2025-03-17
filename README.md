@@ -42,6 +42,8 @@
 
 4) Test the API
 
+    Access Postwoman with http://192.168.124.237:3001/
+    
     In Postwoman, make sure you format the url correctly (localhost won't work since it is in a docker network) :    
     * Method : ```POST```
     * URL :
