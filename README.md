@@ -175,12 +175,78 @@
 
     Listing all categories to check if it was added :
 
+    * Method : ```GET```
+    * URL :
+        ```
+        http://192.168.124.237:3000/api/category
+        ```
+    * Headers :     
+        * Accept-Language : en_MX
+
     Answer :
+    ```
+    {
+    "type": "Success",
+    "message": "Found categories successfully.",
+    "categories": [
+        {
+            "_id": "67d7ae281808a2f9e65a22c3",
+            "name": "coffee",
+            "description": "all products with coffee",
+            "image": "https://res.cloudinary.com/dtthivula/image/upload/v1742188071/test/Category/coffee/li7mqk7py25kzbch6euh.webp",
+            "imageId": "test/Category/coffee/li7mqk7py25kzbch6euh"
+        }
+    ]
+    }
+    ```
 
 
 8) Adding a product with Postwoman
 
-    Adding a product in the "coffee" category
+    Adding a product in the "coffee" category :
+
+    * Method : ```POST```
+    * URL :
+        ```
+        http://192.168.124.237:3000/api/product
+        ```
+    * Content type : ```multipart/form-data```
+    * Headers :     
+        * Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODc4OTEsImV4cCI6MTc0MjE5MTQ5MSwidHlwZSI6ImFjY2VzcyJ9.mNPAcd7NU-GJWvTsZ2TBuj2Ts9rlpIFQllzx9b1x_jA
+        * Accept-Language : en_MX
+        * Content-Type : multipart/form-data
+    * Body (add the following fields):
+        * name: Arabica Coffee
+        * description: High-quality Arabica coffee beans, perfect for brewing.
+        * category : coffee
+        * price : 1500
+        * priceDiscount : 10
+        * colors : Brown
+        * sizes : 250g, 500g
+        * quantity : 100 
+        * sold : 0
+        * isOutOfStock : false
+        * mainImage : (image principale)
+        * images : (additional images)
+    * Body (raw input)
+        ```
+        {
+            "name": "Arabica Coffee",
+            "description": "High-quality Arabica coffee beans, perfect for brewing.",
+            "category": "coffee",
+            "price": "1500",
+            "priceDiscount": "10",
+            "colors": "Brown",
+            "sizes": "250g, 500g",
+            "quantity": "100",
+            "sold": "0",
+            "isOutOfStock": "false",
+            "mainImage": [
+                {}
+            ]
+        }
+        ```
+
 
     Answer :
 
