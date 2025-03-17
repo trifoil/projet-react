@@ -53,7 +53,7 @@
         * Content-Type : multipart/form-data
         * Accept-Language : en_MX
     * Raw input (add the image through the ui):            
-        ```
+        ```json
         {
         "username": "testuser",
         "name": "Test User",
@@ -90,11 +90,51 @@
 
     Example JSON of admin account, to put in "users" of the database:
 
-    ```
+    ```json
     {  
     "email": "augustin.vangeebergen@std.heh.be",
     "password": "$argon2i$v=19$m=16,t=2,p=1$dWxPMWFZOHlEQVdNYTJtcA$Agb67pRHnvQNdUxtcPi7kA", 
     "role": "admin" 
+    }
+    ```
+
+6) Connection as an admin
+
+    To fetch the token that will be used later, whe have to talk to the API.
+
+    * Method : ```POST```
+    * URL :
+        ```
+        http://192.168.124.237:3000/api/auth/login
+        ```
+    * Content type : ```application/json```
+    * Headers :     
+        * Accept-Language : en_MX
+    * Raw input (add the image through the ui): 
+        ```json
+        {
+        "email": "augustin.vangeebergen@std.heh.be",
+        "password": "Test123*"
+        }
+        ```
+
+    The answer will look like this :
+
+    ```json
+    {
+    "type": "Success",
+    "message": "User logged in successfuly.",
+    "user": {
+        "isEmailVerified": false,
+        "_id": "67d77f2d9ff9d2c7fc162b8b",
+        "email": "augustin.vangeebergen@std.heh.be",
+        "password": "$argon2i$v=19$m=16,t=2,p=1$dWxPMWFZOHlEQVdNYTJtcA$Agb67pRHnvQNdUxtcPi7kA",
+        "role": "admin"
+    },
+    "tokens": {
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODM2ODUsImV4cCI6MTc0MjE4NzI4NSwidHlwZSI6ImFjY2VzcyJ9.IlB3Z8QQgV4Rvuutx0RKF9kbP2_v4eSalXgWqpQ3srY",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2Q3N2YyZDlmZjlkMmM3ZmMxNjJiOGIiLCJpYXQiOjE3NDIxODM2ODUsImV4cCI6MTc0MjI3MDA4NSwidHlwZSI6InJlZnJlc2gifQ.Hvx6it8jXa-N9t8dhr8xsu6DQieFWVTOsNIiXHXTL2U"
+    }
     }
     ```
 
