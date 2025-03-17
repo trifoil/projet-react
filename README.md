@@ -43,7 +43,9 @@
 4) Test the API
 
     Access Postwoman with http://192.168.124.237:3001/
-    
+
+    Doc : https://documenter.getpostman.com/view/11050349/2s946feCf5#406e4d25-5959-44ff-8bad-bcea58609c91
+
     In Postwoman, make sure you format the url correctly (localhost won't work since it is in a docker network) :    
     * Method : ```POST```
     * URL :
